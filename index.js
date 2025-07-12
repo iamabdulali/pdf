@@ -104,6 +104,9 @@ app.post("/overlay-pdf", async (req, res) => {
   const textboxes = JSON.parse(textboxesJson || "[]");
 
   try {
+          if (!fs.existsSync("uploads")) {
+    fs.mkdirSync("uploads");
+  }
     const tempPath = path.join(
       __dirname,
       "uploads",
